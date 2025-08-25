@@ -1,0 +1,125 @@
+# ======================
+# C++ СБОРОЧНЫЕ ФАЙЛЫ (ОЧЕНЬ ВАЖНО!)
+# ======================
+
+# Исполняемые файлы
+*.exe
+*.out
+*.app
+
+# Объектные файлы
+*.o
+*.obj
+
+# Библиотеки
+*.lib
+*.a
+*.dll
+*.so
+*.dylib
+
+# Файлы компоновщика
+*.ilk
+*.pdb
+*.idb
+
+# Файлы Visual Studio
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.sdf
+ipch/
+*.aps
+*.ncb
+*.opensdf
+
+# Файлы CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Файлы сборки
+build/
+Debug/
+Release/
+x64/
+x86/
+bin/
+obj/
+
+# ======================
+# СИСТЕМНЫЕ ФАЙЛЫ WINDOWS
+# ======================
+
+# Thumbnail cache
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Файлы свойств папок
+Desktop.ini
+
+# Корзина
+$RECYCLE.BIN/
+
+# Файлы индексации
+*.stackdump
+
+# Временные файлы
+*.tmp
+*.temp
+*.tmp.md
+
+# Резервные копии
+*.bak
+*.backup
+*.swp
+*.swo
+*~
+
+# ======================
+# СРЕДЫ РАЗРАБОТКИ
+# ======================
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# CLion
+.idea/
+*.iml
+
+# Visual Studio
+.vs/
+
+# ======================
+# ДАННЫЕ И КОНФИГУРАЦИИ
+# ======================
+
+# Файлы баз данных
+*.db
+*.sqlite
+*.sqlite3
+
+# Лог файлы
+*.log
+logs/
+
+# Файлы настроек (содержат чувствительные данные)
+config.ini
+settings.ini
+*.config
+
+# Файлы с паролями и ключами
+*.key
+*.pem
+*.crt
+*.cert
