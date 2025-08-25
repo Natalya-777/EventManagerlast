@@ -1,36 +1,27 @@
 #include "EventManager.h"
 #include <iostream>
 #include <chrono>
-#include <format>
 
 int main() {
     try {
-        EventManager manager("events.txt");
+        EventManager manager("C:\\TOP\\EventManager\\events.txt");
 
-        auto today = std::chrono::floor<std::chrono::days>(
-            std::chrono::system_clock::now()
-        );
 
-        auto upcoming = manager.getUpcomingEvents(today);
+        std::chrono::sys_days newEventDate = std::chrono::sys_days{ std::chrono::year{2023} / std::chrono::month{12} / std::chrono::day{25} };
+        manager.addEvent(Event(newEventDate, "Sport"));
 
-        if (upcoming.empty()) {
-            std::cout << "No upcoming events." << std::endl;
+        // Сохранение изменений в файл
+        manager.saveToFile("C:\TOP\EventManager\events.txt");
+
+        // Получение ближайших событий
+        auto upcomingEvents = manager.getUpcomingEvents(std::chrono::sys_days{ std::chrono::year{2023} / std::chrono::month{10} / std::chrono::day{1} });
+        for (const auto& event : upcomingEvents) {
+            std::cout << event.getDescription() << " on " << event.getDate() << std::endl;
         }
-        else {
-            for (const auto& e : upcoming) {
-                auto ymd = std::chrono::year_month_day(e.getDate());
-                std::cout
-                    << std::format("{:02}.{:02}.{:04} ",
-                        unsigned(ymd.day()),
-                        unsigned(ymd.month()),
-                        int(ymd.year()))
-                    << e.getDescription() << "\n";
-            }
-        }
+    }
+    catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    }
 
-    }
-    catch (const std::exception& ex) {
-        std::cerr << "Error: " << ex.what() << std::endl;
-        return 1;
-    }
+    return 0;
 }

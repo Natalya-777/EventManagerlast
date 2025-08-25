@@ -9,6 +9,8 @@ public:
     EventManager(const std::string& filename);
 
     std::vector<Event> getUpcomingEvents(std::chrono::sys_days date, size_t count = 7);
+    void addEvent(const Event& event);
+    void saveToFile(const std::string& filename) const;
 
 private:
     std::vector<Event> events_;

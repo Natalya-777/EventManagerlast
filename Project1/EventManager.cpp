@@ -3,6 +3,10 @@
 #include <sstream>
 #include <algorithm>
 #include <iomanip>
+#include <stdexcept>
+#include <chrono>
+#include <iostream>
+#include <stdexcept>
 
 EventManager::EventManager(const std::string& filename) {
     loadFromFile(filename);
@@ -35,7 +39,6 @@ void EventManager::loadFromFile(const std::string& filename) {
     }
 }
 
-
 std::chrono::sys_days EventManager::parseDate(const std::string& dateStr) {
     int d, m, y;
     char dot1, dot2;
@@ -65,4 +68,24 @@ std::vector<Event> EventManager::getUpcomingEvents(std::chrono::sys_days date, s
     }
 
     return upcomingEvents;
+}
+
+void EventManager::addEvent(const Event& event) {
+    events_.push_back(event);
+    std::sort(events_.begin(), events_.end()); // Сортировка после добавления
+}
+
+void EventManager::saveToFile(const std::string& filename) const {
+    std::ofstream file(filename);
+    for (const auto& event : events_) {
+        auto date = event.getDate();
+        auto ymd = std::chrono::year_month_day(date);
+
+        file << std::setw(2) << std::setfill('0')
+            << static_cast<unsigned>(ymd.day()) << "."
+            << std::setw(2) << std::setfill('0')
+            << static_cast<unsigned>(ymd.month()) << "."
+            << static_cast<int>(ymd.year()) << " "
+            << event.getDescription() << "\n";
+    }
 }
