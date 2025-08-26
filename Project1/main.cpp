@@ -1,3 +1,4 @@
+#ifndef RUN_TESTS
 #include "EventManager.h"
 #include <iostream>
 #include <chrono>
@@ -25,3 +26,4 @@ int main() {
 
     return 0;
 }
+#endif
